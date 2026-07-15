@@ -28,7 +28,6 @@ export const AccordionItem = ({
         className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
       >
         <div className="flex items-center space-x-4">
-          {/* الأيقونة ورقم الخطوة */}
           <div
             className={`p-2 rounded-lg ${isOpen ? "bg-blue-50 text-blue-600" : "text-gray-400"}`}
           >
@@ -64,7 +63,6 @@ export const AccordionItem = ({
         </div>
       </button>
 
-      {/* محتوى الخطوة (الـ Body) مع أنيميشن فتح وقفل */}
       <div
         className={`transition-all duration-300 ease-in-out ${
           isOpen
@@ -74,10 +72,8 @@ export const AccordionItem = ({
       >
         {isOpen && (
           <div>
-            {/* المنتجات أو الخيارات الخاصة بالخطوة */}
             <div className="mb-6">{children}</div>
 
-            {/* زرار الانتقال للخطوة التالية (Next Button) */}
             {stepId < 4 && nextStepTitle && (
               <div className="flex justify-end border-t border-gray-100 pt-4">
                 <button

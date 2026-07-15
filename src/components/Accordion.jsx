@@ -11,7 +11,7 @@ export const Accordion = ({ productsData }) => {
   };
 
   return (
-    <div className="border border-gray-200 rounded-2xl bg-red-900  shadow-sm overflow-hidden">
+    <div className="border border-gray-200 rounded-2xl bg-white  shadow-sm overflow-hidden">
       <AccordionItem
         stepId={1}
         title="Choose your cameras"
