@@ -17,7 +17,7 @@ export const SEED_CART = {
     price: 34.99,
     compareAtPrice: 39.99,
     category: "Cameras",
-    image: "/cam-pan-v3.png",
+    image: "/images/cam-pan-v3.png",
   },
 
   "wyze-sense-motion-sensor-default": {

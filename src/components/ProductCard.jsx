@@ -108,8 +108,8 @@ export const ProductCard = ({ product }) => {
           <div className="h-6.5 mt-2" />
         )}
 
-        <div className="flex items-end justify-between mt-3 pt-2 border-t border-gray-50">
-          <div className="flex items-center border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+        <div className="flex items-center justify-between flex-wrap gap-2 mt-3 pt-2 border-t border-gray-50">
+          <div className="flex items-center border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm shrink-0">
             <button
               onClick={handleDecrement}
               disabled={currentQuantity === 0}
@@ -132,7 +132,7 @@ export const ProductCard = ({ product }) => {
             </button>
           </div>
 
-          <div className="text-right leading-none">
+          <div className="text-right leading-none shrink-0">
             {compareAtPrice && (
               <span className="block text-[11px] text-red-500 line-through font-bold mb-0.5">
                 ${compareAtPrice.toFixed(2)}

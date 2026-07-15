@@ -64,25 +64,25 @@ export const AccordionItem = ({
       </button>
 
       <div
-        className={`transition-all duration-300 ease-in-out ${
+        className={`transition-all duration-500 ease-in-out overflow-hidden ${
           isOpen
-            ? "max-h-[1200px] opacity-100 border-t border-gray-100 p-5"
-            : "max-h-0 opacity-0"
+            ? "max-h-[3000px] opacity-100 border-t border-gray-100 p-5 overflow-visible"
+            : "max-h-0 opacity-0 pointer-events-none"
         }`}
       >
         {isOpen && (
-          <div>
+          <div className="flex flex-col">
             <div className="mb-6">{children}</div>
 
             {stepId < 4 && nextStepTitle && (
-              <div className="flex justify-end border-t border-gray-100 pt-4">
+              <div className="flex justify-end border-t border-gray-100 pt-4 w-full">
                 <button
                   onClick={nextStep}
-                  className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200"
+                  className="flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-6 rounded-xl transition-colors duration-200 w-full md:w-auto shrink-0"
                 >
                   <span>Next: {nextStepTitle}</span>
                   <svg
-                    className="w-4 h-4"
+                    className="w-4 h-4 shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
