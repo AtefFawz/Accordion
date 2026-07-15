@@ -1,16 +1,44 @@
-# React + Vite
+# Wyze Custom Security Bundle Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A highly optimized, responsive, and pixel-perfect React prototype reconstructing the custom security bundle builder experience with a live review panel. 
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+[👉 Click here to experience the Live Demo](https://accordion-nu-eight.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🛠️ Tech Stack & Architecture Decisions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **React & Vite:** Chosen for blazing-fast development server start times and optimal production builds.
+*   **Tailwind CSS:** Employed to precisely mirror the Figma design (spacing, rounded corners, active/inactive borders) and build a highly fluid responsive layout.
+*   **Zustand (Slices Pattern):** State is modularly divided into `cartSlice.js` (business logic, calculations, persistence) and `uiSlice.js` (accordion active states, variant tracking). This keeps the code clean, scalable, and extremely easy to test.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Implemented Features & Edge Cases Handled
+
+*   **Variant-Specific Quantity Tracking:** Solved the complex variant state challenge. Quantities of different colors of the same product (e.g., White and Black) are tracked independently using composite keys (`${productId}-${variantId}`) in the global store.
+*   **Symmetrical Grid & Equal Heights:** Cards in the same grid row dynamically stretch to maintain the exact same height (`items-stretch`). Additionally, if there is an odd number of products (like the 5 cameras in Step 1), the final card is beautifully centered on desktop viewports.
+*   **Dual-Directional Syncing:** Quantity steppers are fully synchronized in real-time across the product cards on the left and the category groups in the review panel on the right.
+*   **Smart Defensive Coding:** Handled standard rendering pitfalls like missing images or unassigned categories gracefully using optional chaining and default prop values.
+*   **State Persistence ("Save my system for later"):** Custom configurations are saved locally via `localStorage` and fully restored upon page reloads or return visits.
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── components/
+│   ├── Accordion.jsx        # Standardizes the steps grid
+│   ├── AccordionItem.jsx    # Handles individual step animations & step progression
+│   ├── ProductCard.jsx      # Implements horizontal card UX & active variant stepper
+│   └── ReviewPanel.jsx      # Summarizes selections, pricing, and savings
+├── data/
+│   ├── products.json        # Data-driven product catalog
+│   └── seedCart.js          # Pre-populated initial basket to match Figma
+├── store/
+│   ├── slices/
+│   │   ├── cartSlice.js     # Cart operations, totals logic, and persistence
+│   │   └── uiSlice.js       # Accordion steps navigation & color selections
+│   └── useBundleStore.js    # Consolidated global store (Orchestrator)
